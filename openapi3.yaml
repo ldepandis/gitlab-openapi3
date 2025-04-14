@@ -71775,14 +71775,14 @@ components:
           format: int32
       description: Merge topics
   securitySchemes:
-    access_token_header:
-      type: apiKey
-      name: PRIVATE-TOKEN
-      in: header
-    access_token_query:
-      type: apiKey
-      name: private_token
-      in: query
+#    access_token_header:
+#      type: apiKey
+#      name: PRIVATE-TOKEN
+#      in: header
+#    access_token_query:
+#      type: apiKey
+#      name: private_token
+#      in: query
     accessToken:
       type: http
       description: Personal access token. Use any value for the user name and the
