@@ -71783,4 +71783,9 @@ components:
       type: apiKey
       name: private_token
       in: query
+    accessToken:
+      type: http
+      description: Personal access token. Use any value for the user name and the
+        token as the password.
+      scheme: basic
 x-original-swagger-version: "2.0"
