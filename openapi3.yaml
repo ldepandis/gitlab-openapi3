@@ -71783,8 +71783,7 @@ components:
 #      type: apiKey
 #      name: private_token
 #      in: query
-    accessToken:
-      BearerAuth:
-        type: http
-        scheme: bearer
+     BearerAuth:
+       type: http
+       scheme: bearer
 x-original-swagger-version: "2.0"
