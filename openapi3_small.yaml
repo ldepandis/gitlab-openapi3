@@ -1,0 +1,184 @@
+openapi: 3.0.3
+info:
+  title: GitLab Common API
+  version: 1.0.0
+  description: >
+    Specifica OpenAPI 3.0 per le API più comuni di GitLab.
+servers:
+  - url: https://gitlab.com/api/v4
+components:
+  securitySchemes:
+    PrivateToken:
+      type: apiKey
+      in: header
+      name: PRIVATE-TOKEN
+security:
+  - PrivateToken: []
+paths:
+  /projects:
+    get:
+      summary: Elenco dei progetti
+      responses:
+        '200':
+          description: Lista di progetti
+    post:
+      summary: Crea un nuovo progetto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required: [name]
+      responses:
+        '201':
+          description: Progetto creato
+
+  /projects/{id}:
+    get:
+      summary: Ottieni i dettagli di un progetto
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Dettagli del progetto
+
+  /projects/{id}/issues:
+    get:
+      summary: Elenco delle issue di un progetto
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista di issue
+    post:
+      summary: Crea una nuova issue
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+              required: [title]
+      responses:
+        '201':
+          description: Issue creata
+
+  /projects/{id}/merge_requests:
+    get:
+      summary: Elenco delle merge request
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista di merge request
+    post:
+      summary: Crea una nuova merge request
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source_branch:
+                  type: string
+                target_branch:
+                  type: string
+                title:
+                  type: string
+              required: [source_branch, target_branch, title]
+      responses:
+        '201':
+          description: Merge request creata
+
+  /projects/{id}/repository/commits:
+    get:
+      summary: Elenco dei commit
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista di commit
+
+  /projects/{id}/repository/branches:
+    get:
+      summary: Elenco dei branch
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista di branch
+
+  /projects/{id}/pipelines:
+    get:
+      summary: Elenco delle pipeline
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista di pipeline
+    post:
+      summary: Avvia una pipeline
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ref:
+                  type: string
+              required: [ref]
+      responses:
+        '201':
+          description: Pipeline avviata
+
