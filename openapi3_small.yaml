@@ -167,7 +167,7 @@ paths:
         '200':
           description: Lista di branch
 
-  /api/v4/projects/{id}/repository/tree:
+  /projects/{id}/repository/tree:
     get:
       summary: Stampa alberatura di un progetto
       parameters:
