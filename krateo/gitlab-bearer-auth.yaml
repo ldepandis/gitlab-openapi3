@@ -1,0 +1,10 @@
+kind: BearerAuth
+apiVersion: gitlab.com/v1alpha1
+metadata:
+  name: bearer-gitlab
+  namespace: gitlab-test
+spec:
+  tokenRef:
+    name: gitlab-repo-creds
+    namespace: gitlab-test
+    key: token

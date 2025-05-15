@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  token: Z2xwYXQtYTJoamJXWXJyVlY2TUgzTnp4WEc=
+kind: Secret
+metadata:
+  namespace: gitlab-test
+  name: gitlab-repo-creds

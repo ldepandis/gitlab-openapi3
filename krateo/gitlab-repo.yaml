@@ -1,0 +1,16 @@
+kind: RestDefinition
+apiVersion: swaggergen.krateo.io/v1alpha1
+metadata:
+  name: gitlab-repo
+  namespace: gitlab-test
+spec: 
+  oasPath: https://raw.githubusercontent.com/ldepandis/gitlab-openapi3/refs/heads/main/openapi3_small.yaml
+  resourceGroup: gitlab.com
+  resource: 
+    kind: Repo
+    identifiers:
+    - id
+    verbsDescription:
+    - action: get
+      method: GET
+      path: /api/v4/projects/{id}/repository/tree
