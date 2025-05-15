@@ -7,6 +7,21 @@ info:
 servers:
   - url: https://gitlab.com/api/v4
 components:
+  schemas:
+    API_Entities_TreeObject:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        path:
+          type: string
+        mode:
+          type: string
+      description: modello di API_Entities_TreeObject
   securitySchemes:
 #    PrivateToken:
 #      type: apiKey
@@ -205,19 +220,7 @@ paths:
           content:
             application/json:
               schema:
-#                $ref: '#/components/schemas/API_Entities_TreeObject'
-                type: object
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
-                  type:
-                    type: string
-                  path:
-                    type: string
-                  mode:
-                    type: string
+                $ref: '#/components/schemas/API_Entities_TreeObject'
 
   /projects/{id}/pipelines:
     get:
@@ -253,19 +256,9 @@ paths:
         '201':
           description: Pipeline avviata
 
-#components:
-#  schemas:
-#    API_Entities_TreeObject:
-#      type: object
-#      properties:
-#        id:
-#          type: string
-#        name:
-#          type: string
-#        type:
-#          type: string
-#        path:
-#          type: string
-#        mode:
-#          type: string
-#      description: modello di API_Entities_TreeObject
+  /fake:
+    post:
+      summary: Esempio di endpoint
+      responses:
+        '200':
+          description: Risposta di esempio
