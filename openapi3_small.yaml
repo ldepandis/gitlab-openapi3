@@ -205,6 +205,7 @@ paths:
           content:
             application/json:
               schema:
+#                $ref: '#/components/schemas/API_Entities_TreeObject'
                 type: object
                 properties:
                   id:
