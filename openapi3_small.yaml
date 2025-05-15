@@ -148,6 +148,57 @@ paths:
         '200':
           description: Lista di branch
 
+  /api/v4/projects/{id}/repository/tree:
+    get:
+      summary: Stampa alberatura di un progetto
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ref
+        in: query
+        schema:
+          type: string
+      - name: path
+        in: query
+        schema:
+          type: string
+      - name: recursive
+        in: query
+        schema:
+          type: boolean
+          default: false
+      - name: page
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      - name: pagination
+        in: query
+        schema:
+          type: string
+          default: legacy
+          enum:
+          - legacy
+          - keyset
+          - none
+      - name: page_token
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Lista contenuti di un progetto
+
   /projects/{id}/pipelines:
     get:
       summary: Elenco delle pipeline
