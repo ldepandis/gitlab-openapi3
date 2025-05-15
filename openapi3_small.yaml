@@ -15,11 +15,6 @@ security:
   - BearerAuth: []
 paths:
   /projects:
-    get:
-      summary: Elenco dei progetti
-      responses:
-        '200':
-          description: Lista di progetti
     post:
       summary: Crea un nuovo progetto
       requestBody:
@@ -44,7 +39,7 @@ paths:
           in: path
           required: true
           schema:
-            type: integer
+            type: string
       responses:
         '200':
           description: Dettagli del progetto
@@ -55,7 +50,7 @@ paths:
           in: path
           required: true
           schema:
-            type: integer
+            type: string
       requestBody:
         required: true
         content:
@@ -75,7 +70,7 @@ paths:
           in: path
           required: true
           schema:
-            type: integer
+            type: string
       responses:
         '202':
           description: Progetto in fase di eliminazione
