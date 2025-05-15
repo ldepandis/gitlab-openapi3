@@ -1,0 +1,17 @@
+apiVersion: gitlab.com/v1alpha1
+kind: Repo
+metadata:
+  name: fireworks-test
+  namespace: gitlab-test
+spec:
+  authenticationRefs:
+    bearerAuthRef: bearer-gitlab
+  id: krateo-v2-template-fireworksapp
+  page: 1
+  page_token: "1"
+  pagination: legacy
+  path: /
+  per_page: 1
+  recursive: false
+  ref: main
+status: {}
