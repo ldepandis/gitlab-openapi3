@@ -217,7 +217,7 @@ paths:
                   path:
                     type: string
                   mode:
-                     type: string
+                    type: string
 
   /projects/{id}/pipelines:
     get:
