@@ -8,12 +8,16 @@ servers:
   - url: https://gitlab.com/api/v4
 components:
   securitySchemes:
-    PrivateToken:
-      type: apiKey
-      in: header
-      name: PRIVATE-TOKEN
+#    PrivateToken:
+#      type: apiKey
+#      in: header
+#      name: PRIVATE-TOKEN
+     BearerAuth:
+       type: http
+       scheme: bearer
 security:
-  - PrivateToken: []
+#  - PrivateToken: []
+  - BearerAuth: []
 paths:
   /projects:
     get:
