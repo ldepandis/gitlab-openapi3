@@ -205,7 +205,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/API_Entities_TreeObject'
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  path:
+                    type: string
+                  mode:
+                     type: string
 
   /projects/{id}/pipelines:
     get:
@@ -241,19 +252,19 @@ paths:
         '201':
           description: Pipeline avviata
 
-components:
-  schemas:
-    API_Entities_TreeObject:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-        path:
-          type: string
-        mode:
-          type: string
-      description: modello di API_Entities_TreeObject
+#components:
+#  schemas:
+#    API_Entities_TreeObject:
+#      type: object
+#      properties:
+#        id:
+#          type: string
+#        name:
+#          type: string
+#        type:
+#          type: string
+#        path:
+#          type: string
+#        mode:
+#          type: string
+#      description: modello di API_Entities_TreeObject
