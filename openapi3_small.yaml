@@ -1,37 +1,17 @@
 openapi: 3.0.3
 info:
-  title: GitLab Common API
+  title: GitLab Project Management API
   version: 1.0.0
   description: >
-    Specifica OpenAPI 3.0 per le API più comuni di GitLab.
+    Specifica OpenAPI 3.0 per la gestione dei progetti su GitLab.
 servers:
   - url: https://gitlab.com/api/v4
 components:
-  schemas:
-    API_Entities_TreeObject:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-        path:
-          type: string
-        mode:
-          type: string
-      description: modello di API_Entities_TreeObject
   securitySchemes:
-#    PrivateToken:
-#      type: apiKey
-#      in: header
-#      name: PRIVATE-TOKEN
-     BearerAuth:
-       type: http
-       scheme: bearer
+    BearerAuth:
+      type: http
+      scheme: bearer
 security:
-#  - PrivateToken: []
   - BearerAuth: []
 paths:
   /projects:
@@ -68,21 +48,8 @@ paths:
       responses:
         '200':
           description: Dettagli del progetto
-
-  /projects/{id}/issues:
-    get:
-      summary: Elenco delle issue di un progetto
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Lista di issue
-    post:
-      summary: Crea una nuova issue
+    put:
+      summary: Aggiorna un progetto esistente
       parameters:
         - name: id
           in: path
@@ -96,54 +63,13 @@ paths:
             schema:
               type: object
               properties:
-                title:
+                name:
                   type: string
-              required: [title]
-      responses:
-        '201':
-          description: Issue creata
-
-  /projects/{id}/merge_requests:
-    get:
-      summary: Elenco delle merge request
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
       responses:
         '200':
-          description: Lista di merge request
-    post:
-      summary: Crea una nuova merge request
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                source_branch:
-                  type: string
-                target_branch:
-                  type: string
-                title:
-                  type: string
-              required: [source_branch, target_branch, title]
-      responses:
-        '201':
-          description: Merge request creata
-
-  /projects/{id}/repository/commits:
-    get:
-      summary: Elenco dei commit
+          description: Progetto aggiornato
+    delete:
+      summary: Elimina un progetto
       parameters:
         - name: id
           in: path
@@ -151,114 +77,5 @@ paths:
           schema:
             type: integer
       responses:
-        '200':
-          description: Lista di commit
-
-  /projects/{id}/repository/branches:
-    get:
-      summary: Elenco dei branch
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Lista di branch
-
-  /projects/{id}/repository/tree:
-    get:
-      summary: Stampa alberatura di un progetto
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: ref
-        in: query
-        schema:
-          type: string
-      - name: path
-        in: query
-        schema:
-          type: string
-      - name: recursive
-        in: query
-        schema:
-          type: boolean
-          default: false
-      - name: page
-        in: query
-        schema:
-          type: integer
-          format: int32
-          default: 1
-      - name: per_page
-        in: query
-        schema:
-          type: integer
-          format: int32
-          default: 20
-      - name: pagination
-        in: query
-        schema:
-          type: string
-          default: legacy
-          enum:
-          - legacy
-          - keyset
-          - none
-      - name: page_token
-        in: query
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Lista contenuti di un progetto
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/API_Entities_TreeObject'
-
-  /projects/{id}/pipelines:
-    get:
-      summary: Elenco delle pipeline
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Lista di pipeline
-    post:
-      summary: Avvia una pipeline
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                ref:
-                  type: string
-              required: [ref]
-      responses:
-        '201':
-          description: Pipeline avviata
-
-  /fake:
-    post:
-      summary: Esempio di endpoint
-      responses:
-        '200':
-          description: Risposta di esempio
+        '202':
+          description: Progetto in fase di eliminazione
