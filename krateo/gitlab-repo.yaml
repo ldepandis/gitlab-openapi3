@@ -13,4 +13,13 @@ spec:
     verbsDescription:
     - action: get
       method: GET
-      path: /api/v4/projects/{id}/repository/tree
+      path: /projects/{id}
+    - action: update
+      method: PUT
+      path: /projects/{id}
+    - action: delete
+      method: DELETE
+      path: /projects/{id}
+    - action: create
+      method: POST
+      path: /projects
