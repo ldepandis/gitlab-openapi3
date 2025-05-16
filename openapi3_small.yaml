@@ -28,7 +28,7 @@ paths:
                   type: string
                 visibility:
                   type: string
-                  enum: [private, internal, public]                  
+                  enum: [private, internal, public]
               required: [name]
       responses:
         '201':
@@ -63,6 +63,9 @@ paths:
               properties:
                 name:
                   type: string
+                visibility:
+                  type: string
+                  enum: [private, internal, public]
       responses:
         '200':
           description: Progetto aggiornato
