@@ -29,6 +29,8 @@ paths:
                 visibility:
                   type: string
                   enum: [private, internal, public]
+                initialize_with_readme:
+                  type: boolean
               required: [name]
       responses:
         '201':
