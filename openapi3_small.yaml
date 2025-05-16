@@ -26,6 +26,9 @@ paths:
               properties:
                 name:
                   type: string
+                visibility:
+                  type: string
+                  enum: [private, internal, public]                  
               required: [name]
       responses:
         '201':
